@@ -1,5 +1,4 @@
 <?php
-//`warning`, `error`, `info`, `debug`
 class MyLogger {
     public function log($message, $level){
         switch($level){
@@ -19,16 +18,19 @@ class MyLogger {
     }
 
     public function warning($message){
-        echo "WARNING: ".$message.PHP_EOL;
+        $this->logWithTime("WARNING: ", $message);
     }
     public function error($message){
-        echo "ERROR: ".$message.PHP_EOL;
+        $this->logWithTime("ERROR: ", $message);
     }
     public function info($message){
-        echo "INFO: ".$message.PHP_EOL;
+        $this->logWithTime("INFO: ", $message);
     }
     public function debug($message){
-        echo "DEBUG: ".$message.PHP_EOL;
+        $this->logWithTime("DEBUG: ", $message);
+    }
+    private function logWithTime($type, $message){
+        echo "[".date("d,M,Y h:i:s")."] $type $message".PHP_EOL;
     }
 }
 
